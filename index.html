@@ -26,16 +26,146 @@ footer{text-align:center;padding:10px;font-size:12px;color:#aaa}
 
 <body>
 
-<!-- 🎓 Academic Research Header -->
 <section style="padding:40px 30px; background:linear-gradient(135deg,#0b1220,#111c36); border-bottom:2px solid #4fc3f7;">
   <h1 style="color:#4fc3f7; margin-bottom:5px;">FogSecurity-AI2</h1>
   <h2 style="margin-top:0; font-weight:normal; color:#ccc;">
-    An AI-Driven Integrated Fog Computing Security Framework
+    AI-Driven Integrated Fog Computing Security Framework
   </h2>
 
-  <p style="margin-top:20px; line-height:1.6;">
-    <strong>Abstract —</strong> FogSecurity-AI2 is a research-driven security architecture designed to enhance trust, reliability, and service availability in fog computing environments. It integrates lightweight node authentication, intelligent mobility tracking, and AI-based adaptive trust evaluation to protect distributed IoT systems.
-  </p>
+  <p><strong>Abstract —</strong> FogSecurity-AI2 is a research-driven fog security architecture integrating node authentication, mobility-aware session management, and AI-based adaptive trust evaluation to protect distributed IoT systems.</p>
 
-  <p style="line-height:1.6;">
-    The framework demonstrates how
+  <p><strong>Keywords:</strong> Fog Computing, AI Security, Node Authentication, Mobility Management, Adaptive Trust</p>
+
+  <p style="font-size:14px; color:#aaa;">
+    Master’s Research in Artificial Intelligence & Cybersecurity<br>
+    Supervisor: Dr. BUSHRAH AL-SHARIF
+  </p>
+</section>
+
+<header>
+<div class="logo">FogSecurity-AI2 Live Simulation</div>
+<button class="btn" onclick="simulateAttack()">Simulate Attack</button>
+</header>
+
+<div class="container">
+
+<div class="card">
+<h2>Authentication Node Table (ANT)</h2>
+<input id="macInput" placeholder="Enter MAC Address">
+<button class="btn" onclick="registerNode()">Register Node</button>
+<div id="nodeList"></div>
+</div>
+
+<div class="card">
+<h2>Mobility Tracker (MTP)</h2>
+<input id="sessionInput" placeholder="Session ID">
+<input id="nodeInput" placeholder="Target Fog Node">
+<button class="btn" onclick="transferSession()">Transfer Session</button>
+<div id="sessionList"></div>
+</div>
+
+<div class="card">
+<h2>AI Trust Monitor</h2>
+<div class="stat">Active Nodes: <span id="activeNodes">0</span></div>
+<div class="stat">Anomalies: <span id="anomalies">0</span></div>
+<div class="stat">Avg Trust Score: <span id="trustScore">100</span>%</div>
+</div>
+
+<div class="card">
+<h2>System Performance</h2>
+Latency: 0.7s<br>
+Handoff: 150ms<br>
+Availability: 99.7%
+<div class="chart">
+<div class="bar" id="b1"></div>
+<div class="bar" id="b2"></div>
+<div class="bar" id="b3"></div>
+<div class="bar" id="b4"></div>
+</div>
+</div>
+
+</div>
+
+<footer>
+FogSecurity-AI2 — AI-Driven Fog Computing Security Framework
+</footer>
+
+<script>
+let nodes = JSON.parse(localStorage.getItem("nodes") || "[]");
+let sessions = JSON.parse(localStorage.getItem("sessions") || "[]");
+let anomalies = 0;
+
+function saveData(){
+localStorage.setItem("nodes", JSON.stringify(nodes));
+localStorage.setItem("sessions", JSON.stringify(sessions));
+}
+
+function registerNode(){
+const mac = document.getElementById("macInput").value;
+if(!mac) return;
+nodes.push({mac:mac,status:"Trusted",trust:100});
+saveData();
+renderAll();
+}
+
+function transferSession(){
+const s = document.getElementById("sessionInput").value;
+const n = document.getElementById("nodeInput").value;
+if(!s || !n) return;
+sessions.push({id:s,node:n});
+saveData();
+renderAll();
+}
+
+function simulateAttack(){
+if(nodes.length===0) return;
+anomalies++;
+let idx=Math.floor(Math.random()*nodes.length);
+nodes[idx].trust -= 20;
+if(nodes[idx].trust<50) nodes[idx].status="Banned";
+saveData();
+renderAll();
+}
+
+function renderNodes(){
+let html="";
+nodes.forEach(n=>{
+let tag=n.status==="Trusted"?"good":"bad";
+html+=`<div>${n.mac} — <span class="tag ${tag}">${n.status}</span> (Trust ${n.trust}%)</div>`;
+});
+document.getElementById("nodeList").innerHTML=html;
+}
+
+function renderSessions(){
+let html="";
+sessions.forEach(s=>{
+html+=`<div>Session ${s.id} → ${s.node}</div>`;
+});
+document.getElementById("sessionList").innerHTML=html;
+}
+
+function renderStats(){
+document.getElementById("activeNodes").innerText=nodes.length;
+document.getElementById("anomalies").innerText=anomalies;
+let avg=nodes.length?Math.round(nodes.reduce((a,b)=>a+b.trust,0)/nodes.length):100;
+document.getElementById("trustScore").innerText=avg;
+}
+
+function animateBars(){
+["b1","b2","b3","b4"].forEach(id=>{
+document.getElementById(id).style.height=Math.floor(Math.random()*100)+"%";
+});
+}
+
+function renderAll(){
+renderNodes();
+renderSessions();
+renderStats();
+animateBars();
+}
+
+renderAll();
+</script>
+
+</body>
+</html>

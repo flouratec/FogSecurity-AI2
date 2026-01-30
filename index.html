@@ -2,103 +2,40 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>FogSecurity-AI2 Dashboard</title>
+<title>FogSecurity-AI2 Research Platform</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
 body{margin:0;font-family:Arial;background:#0b1220;color:#fff}
 header{display:flex;justify-content:space-between;align-items:center;padding:15px 25px;background:#111c36}
 .logo{font-weight:bold;font-size:20px;color:#4fc3f7}
-.btn{padding:8px 14px;border:none;border-radius:6px;background:#4fc3f7;color:#000;font-weight:bold;cursor:pointer}
+.btn{padding:8px 14px;border:none;border-radius:6px;background:#4fc3f7;color:#000;font-weight:bold;cursor:pointer;margin-top:5px}
 .container{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px}
 .card{background:#111c36;padding:15px;border-radius:10px}
 h2{margin-top:0}
 input{width:100%;padding:8px;margin-top:5px;margin-bottom:10px;border-radius:5px;border:none}
-.table{margin-top:10px;font-size:14px}
 .tag{padding:3px 8px;border-radius:12px;font-size:12px}
 .good{background:#1b5e20}
 .bad{background:#b71c1c}
 .chart{display:flex;gap:6px;height:100px;margin-top:10px}
-.bar{flex:1;background:#4fc3f7}
+.bar{flex:1;background:#4fc3f7;transition:0.5s}
+.stat{font-size:18px;margin:5px 0}
 footer{text-align:center;padding:10px;font-size:12px;color:#aaa}
 </style>
 </head>
+
 <body>
-<section style="padding:30px; background:#111c36; margin:20px; border-radius:10px;">
-  <h1 style="color:#4fc3f7; margin-top:0;">Project Abstract — FogSecurity-AI2</h1>
 
-  <p>
-  FogSecurity-AI2 is an AI-driven integrated fog computing security framework designed to address critical challenges in distributed Internet of Things (IoT) environments. As fog computing extends cloud capabilities closer to edge devices, it introduces new security risks including rogue node infiltration, session disruption during mobility, and reduced service availability.
+<!-- 🎓 Academic Research Header -->
+<section style="padding:40px 30px; background:linear-gradient(135deg,#0b1220,#111c36); border-bottom:2px solid #4fc3f7;">
+  <h1 style="color:#4fc3f7; margin-bottom:5px;">FogSecurity-AI2</h1>
+  <h2 style="margin-top:0; font-weight:normal; color:#ccc;">
+    An AI-Driven Integrated Fog Computing Security Framework
+  </h2>
+
+  <p style="margin-top:20px; line-height:1.6;">
+    <strong>Abstract —</strong> FogSecurity-AI2 is a research-driven security architecture designed to enhance trust, reliability, and service availability in fog computing environments. It integrates lightweight node authentication, intelligent mobility tracking, and AI-based adaptive trust evaluation to protect distributed IoT systems.
   </p>
 
-  <p>
-  This project proposes a novel architecture combining three complementary mechanisms: an Authentication Node Table (ANT) for lightweight node verification using cryptographic hashing, a Mobility Tracker Protocol (MTP) to maintain seamless session continuity during handoff events, and an AI-based adaptive trust model that dynamically evaluates fog node behavior.
-  </p>
-
-  <p>
-  The system demonstrates how integrating authentication, mobility management, and artificial intelligence within the fog layer can simultaneously improve latency, reliability, and security resilience. FogSecurity-AI2 provides a practical model for intelligent, self-adaptive fog infrastructures capable of defending against emerging cyber threats while sustaining uninterrupted IoT services.
-  </p>
-
-  <p>
-  This platform serves as a research-driven prototype illustrating the future of secure, autonomous, and high-availability fog computing ecosystems.
-  </p>
-</section>
-
-<header>
-<div class="logo">FogSecurity-AI2</div>
-<button class="btn" onclick="simulate()">Simulate Attack</button>
-</header>
-
-<div class="container">
-
-<div class="card">
-<h2>Node Authentication (ANT)</h2>
-<input placeholder="Enter MAC Address">
-<button class="btn">Register Node</button>
-<div class="table">
-MAC: 00:1A:2B:3C:4D:5E — <span class="tag good">Trusted</span><br>
-MAC: 88:AF:91:77:BC:22 — <span class="tag bad">Banned</span>
-</div>
-</div>
-
-<div class="card">
-<h2>Session Mobility (MTP)</h2>
-<input placeholder="Session ID">
-<input placeholder="Fog Node">
-<button class="btn">Transfer Session</button>
-</div>
-
-<div class="card">
-<h2>AI Threat Analysis</h2>
-Active Nodes: 48<br>
-Anomalies: 2<br>
-Unauthorized Attempts: 5
-</div>
-
-<div class="card">
-<h2>System Performance</h2>
-Latency: 0.7s<br>
-Handoff: 150ms<br>
-Availability: 99.7%
-<div class="chart">
-<div class="bar" style="height:40%"></div>
-<div class="bar" style="height:70%"></div>
-<div class="bar" style="height:50%"></div>
-<div class="bar" style="height:80%"></div>
-<div class="bar" style="height:60%"></div>
-</div>
-</div>
-
-</div>
-
-<footer>
-FogSecurity-AI2 — AI-Driven Fog Computing Security Framework
-</footer>
-
-<script>
-function simulate(){
-alert("Simulated anomaly detected. Trust score reduced.");
-}
-</script>
-
-</body>
-</html>
+  <p style="line-height:1.6;">
+    The framework demonstrates how

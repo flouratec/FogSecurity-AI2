@@ -1,5 +1,12 @@
 # FogSecurity-AI2
 
+AI-Driven Fog Computing Security Framework
+
+## Live Interactive System
+https://USERNAME.github.io/FogSecurity-AI2/
+
+This research project demonstrates an integrated fog computing security architecture combining authentication, mobility management, and AI-based adaptive trust.
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -20,7 +20,6 @@ https://flouratec.github.io/FogSecurity-AI2/
 
 ## 🎓 Research Information
 **Degree:** Master’s in Artificial Intelligence & Cybersecurity  
-**Supervisor:** Dr. BUSHRAH AL-SHARIF  
 **Institution:** Islamic University of Minnesota  
 
 ---

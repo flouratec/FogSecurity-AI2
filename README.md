@@ -1,4 +1,4 @@
-<title>FogSecurity-AI2 Live Dashboard</title>
+# FogSecurity-AI2
 
 <!DOCTYPE html>
 <html lang="en">

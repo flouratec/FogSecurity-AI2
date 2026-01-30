@@ -1,94 +1,32 @@
-# FogSecurity-AI2
+![FogSecurity-AI2 Banner](https://raw.githubusercontent.com/flouratec/FogSecurity-AI2/main/banner.png)
 
-AI-Driven Fog Computing Security Framework
+# FogSecurity-AI2  
+### AI-Driven Integrated Fog Computing Security Framework
 
-## Live Interactive System
+FogSecurity-AI2 is a research-driven security architecture designed to enhance trust, reliability, and service availability in fog computing environments. The framework integrates:
+
+- Lightweight node authentication (ANT)
+- Mobility-aware session management (MTP)
+- AI-based adaptive trust evaluation
+
+This project demonstrates how intelligent fog-layer mechanisms can protect distributed IoT systems against rogue nodes and service disruption.
+
+---
+
+## 🔗 Live Interactive System
 https://flouratec.github.io/FogSecurity-AI2/
 
-This research project demonstrates an integrated fog computing security architecture combining authentication, mobility management, and AI-based adaptive trust.
+---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>FogSecurity-AI2 Dashboard</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body{margin:0;font-family:Arial;background:#0b1220;color:#fff}
-header{display:flex;justify-content:space-between;align-items:center;padding:15px 25px;background:#111c36}
-.logo{font-weight:bold;font-size:20px;color:#4fc3f7}
-.btn{padding:8px 14px;border:none;border-radius:6px;background:#4fc3f7;color:#000;font-weight:bold;cursor:pointer}
-.container{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px}
-.card{background:#111c36;padding:15px;border-radius:10px}
-h2{margin-top:0}
-input{width:100%;padding:8px;margin-top:5px;margin-bottom:10px;border-radius:5px;border:none}
-.table{margin-top:10px;font-size:14px}
-.tag{padding:3px 8px;border-radius:12px;font-size:12px}
-.good{background:#1b5e20}
-.bad{background:#b71c1c}
-.chart{display:flex;gap:6px;height:100px;margin-top:10px}
-.bar{flex:1;background:#4fc3f7}
-footer{text-align:center;padding:10px;font-size:12px;color:#aaa}
-</style>
-</head>
-<body>
+## 🎓 Research Information
+**Degree:** Master’s in Artificial Intelligence & Cybersecurity  
+**Supervisor:** Dr. BUSHRAH AL-SHARIF  
+**Institution:** Islamic University of Minnesota  
 
-<header>
-<div class="logo">FogSecurity-AI2</div>
-<button class="btn" onclick="simulate()">Simulate Attack</button>
-</header>
+---
 
-<div class="container">
-
-<div class="card">
-<h2>Node Authentication (ANT)</h2>
-<input placeholder="Enter MAC Address">
-<button class="btn">Register Node</button>
-<div class="table">
-MAC: 00:1A:2B:3C:4D:5E — <span class="tag good">Trusted</span><br>
-MAC: 88:AF:91:77:BC:22 — <span class="tag bad">Banned</span>
-</div>
-</div>
-
-<div class="card">
-<h2>Session Mobility (MTP)</h2>
-<input placeholder="Session ID">
-<input placeholder="Fog Node">
-<button class="btn">Transfer Session</button>
-</div>
-
-<div class="card">
-<h2>AI Threat Analysis</h2>
-Active Nodes: 48<br>
-Anomalies: 2<br>
-Unauthorized Attempts: 5
-</div>
-
-<div class="card">
-<h2>System Performance</h2>
-Latency: 0.7s<br>
-Handoff: 150ms<br>
-Availability: 99.7%
-<div class="chart">
-<div class="bar" style="height:40%"></div>
-<div class="bar" style="height:70%"></div>
-<div class="bar" style="height:50%"></div>
-<div class="bar" style="height:80%"></div>
-<div class="bar" style="height:60%"></div>
-</div>
-</div>
-
-</div>
-
-<footer>
-FogSecurity-AI2 — AI-Driven Fog Computing Security Framework
-</footer>
-
-<script>
-function simulate(){
-alert("Simulated anomaly detected. Trust score reduced.");
-}
-</script>
-
-</body>
-</html>
+## 📊 Key Contributions
+✔ Integrated fog security model  
+✔ AI-based trust scoring  
+✔ Mobility-aware session continuity  
+✔ Real-time performance monitoring

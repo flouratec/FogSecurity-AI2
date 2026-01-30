@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>FogSecurity-AI2 Results</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+body{background:#0b1220;color:#fff;font-family:Arial;padding:20px}
+h1{color:#4fc3f7}
+canvas{background:#111c36;border-radius:10px;padding:10px}
+</style>
+</head>
+<body>
+
+<h1>Experimental Results Dashboard</h1>
+
+<canvas id="latencyChart"></canvas>
+
+<script>
+const ctx = document.getElementById('latencyChart');
+
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['Test1','Test2','Test3','Test4','Test5'],
+    datasets: [{
+      label: 'Latency (ms)',
+      data: [700,650,620,600,580],
+      borderColor: '#4fc3f7',
+      fill:false
+    },
+    {
+      label: 'Handoff Delay (ms)',
+      data: [150,140,130,120,110],
+      borderColor: '#ff6384',
+      fill:false
+    }]
+  }
+});
+</script>
+
+</body>
+</html>

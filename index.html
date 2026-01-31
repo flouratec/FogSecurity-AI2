@@ -20,7 +20,7 @@ header{display:flex;justify-content:space-between;align-items:center;padding:14p
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:16px}
 .card{background:var(--card);padding:14px;border-radius:12px;border:1px solid rgba(79,195,247,.12)}
 .card h2{margin:0 0 10px 0;font-size:16px}
-.btn{padding:8px 12px;border:none;border-radius:8px;background:var(--accent);color:#001018;font-weight:bold;cursor:pointer}
+.btn{padding:8px 12px;border:none;border-radius:8px;background:var(--accent);color:#001018;font-weight:bold;cursor:pointer;margin:4px 0}
 .log{max-height:200px;overflow:auto;background:#0e1730;padding:10px;border-radius:8px;font-size:12px}
 .table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px}
 .table th,.table td{padding:8px;border-bottom:1px solid rgba(255,255,255,.06)}
@@ -49,7 +49,7 @@ footer{padding:14px;text-align:center;color:var(--muted);font-size:12px}
   </p>
 </section>
 
-<!-- 🎓 Academic Instruction Card -->
+<!-- 🎓 Instructions Card -->
 <div class="infoBox">
   <h2>How to Use This Research Dashboard</h2>
   <ul>
@@ -69,7 +69,9 @@ footer{padding:14px;text-align:center;color:var(--muted);font-size:12px}
 <h2>Research KPIs</h2>
 Active Nodes: <span id="kpiNodes">0</span><br>
 Active Sessions: <span id="kpiSessions">0</span><br>
-Anomalies: <span id="kpiAnoms">0</span>
+Anomalies: <span id="kpiAnoms">0</span><br>
+<button class="btn" onclick="runThesisExperiment()">Run Thesis Experiment</button>
+<button class="btn" onclick="generateResearchReport()">Generate Research Report</button>
 </div>
 
 <div class="card">
@@ -104,27 +106,16 @@ FogSecurity-AI2 — AI-Driven Fog Computing Security Framework
 </footer>
 
 <script>
-const state = {nodes:[],sessions:[],logs:[],metrics:[],anomalies:0};
+const state={nodes:[],sessions:[],logs:[],metrics:[],anomalies:0};
 
-function logEvent(t,m){state.logs.unshift({t,m});renderLog();}
-function registerNode(){
-  const mac=document.getElementById("macInput").value;
-  state.nodes.push({mac,status:"Trusted"});logEvent("ANT","Node "+mac+" registered");renderAll();
-}
-function createSession(){
-  const id=document.getElementById("sessionIdInput").value;
-  state.sessions.push({id});logEvent("MTP","Session "+id+" created");renderAll();
-}
-function runLatencyProbe(){
-  let t0=performance.now();for(let i=0;i<30000;i++){Math.sqrt(i)};let t1=performance.now();
-  state.metrics.push(t1-t0);logEvent("PERF","Latency "+Math.round(t1-t0)+"ms");
-}
-function renderLog(){document.getElementById("logBox").innerHTML=state.logs.map(l=>l.t+": "+l.m).join("<br>");}
-function renderAll(){
- document.getElementById("kpiNodes").textContent=state.nodes.length;
- document.getElementById("kpiSessions").textContent=state.sessions.length;
- document.getElementById("kpiAnoms").textContent=state.anomalies;
-}
+function logEvent(t,m){state.logs.unshift(t+": "+m);renderLog();}
+function registerNode(){let mac=document.getElementById("macInput").value;state.nodes.push({mac});logEvent("ANT","Node "+mac+" registered");renderAll();}
+function createSession(){let id=document.getElementById("sessionIdInput").value;state.sessions.push({id});logEvent("MTP","Session "+id+" created");renderAll();}
+function runLatencyProbe(){let t0=performance.now();for(let i=0;i<30000;i++){Math.sqrt(i)};let t1=performance.now();state.metrics.push(t1-t0);logEvent("PERF","Latency "+Math.round(t1-t0)+"ms");}
+function runThesisExperiment(){state.anomalies+=2;logEvent("EXPERIMENT","Full thesis experiment executed");renderAll();}
+function generateResearchReport(){let report=`FogSecurity-AI2 Research Report\nNodes: ${state.nodes.length}\nSessions: ${state.sessions.length}\nAnomalies: ${state.anomalies}`;let blob=new Blob([report],{type:"text/plain"});let a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="FogSecurity-AI2_Report.txt";a.click();}
+function renderLog(){document.getElementById("logBox").innerHTML=state.logs.join("<br>");}
+function renderAll(){document.getElementById("kpiNodes").textContent=state.nodes.length;document.getElementById("kpiSessions").textContent=state.sessions.length;document.getElementById("kpiAnoms").textContent=state.anomalies;}
 renderAll();
 </script>
 

@@ -20,12 +20,6 @@ This project demonstrates how intelligent fog-layer mechanisms can protect distr
 https://flouratec.github.io/FogSecurity-AI2/
 ---
 
-## 🎓 Research Information
-**Degree:** Master’s in Artificial Intelligence & Data Science  
-**Institution:** Islamic University of Minnesota  
-## 📁 Author
-Eng.Fatimah Lamgharee 
-
 ## 📊 Simulation Dataset
 Contains latency and reliability tests comparing cloud vs fog processing:
 | Metric | Cloud | Fog | Improvement |
@@ -34,10 +28,29 @@ Contains latency and reliability tests comparing cloud vs fog processing:
 | Handoff latency | 580ms | 150ms | 74% |
 
 The FogSecurity-AI2 system was implemented as a hybrid architecture. The experimental interface was developed using web technologies, while backend fog services were implemented in PHP. AI-driven trust evaluation and performance analytics were developed using Python scripts, forming a multi-layer research prototype.
+## 🛠 Technology Stack
+
+FogSecurity-AI2 was developed using a hybrid multi-layered architecture combining web technologies, fog-layer services, and AI-driven analytics.
+
+| Layer | Technology | Role |
+|------|------------|------|
+| Frontend Simulation | HTML5, CSS3, JavaScript | Interactive research dashboard, visualization, performance monitoring, attack simulation |
+| Data Visualization | Chart.js | Real-time graphical performance analysis |
+| Fog Service Layer | PHP | Node authentication (ANT), session migration (MTP), fog gateway simulation |
+| AI & Analytics Layer | Python | Adaptive trust engine, latency analysis, experimental data processing |
+| Data Storage (Experimental) | CSV / Local Storage | Research data logging and analysis datasets |
+
+This combination of technologies allows FogSecurity-AI2 to function as a complete research prototype that integrates visualization, fog-layer service control, and AI-based analytical intelligence.
+
 ## 🔗 Publication
 This repository supports the master’s thesis:  
 “Security Issues in Fog Computing: An Integrated Model for Node Authentication and Service Availability” (2026)
 ---
+## 🎓 Research Information
+**Degree:** Master’s in Artificial Intelligence & Data Science  
+**Institution:** Islamic University of Minnesota  
+## 📁 Author
+Eng.Fatimah Lamgharee 
 
 ## 📊 Key Contributions
 ✔ Integrated fog security model  

@@ -814,7 +814,7 @@ function runThesisExperiment(){
   logEvent("RESULTS",`Average Handoff: ${avgHandoff} ms`);
   logEvent("RESULTS","Unauthorized node attempts detected: 2");
 function generateResearchReport(){
-
+</script>
   let lat = state.metrics.filter(m=>m.latencyMs>0).map(m=>m.latencyMs);
   let ho = state.metrics.filter(m=>m.handoffMs>0).map(m=>m.handoffMs);
 

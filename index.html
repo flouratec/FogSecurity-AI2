@@ -28,8 +28,24 @@ footer{text-align:center;padding:10px;font-size:12px;color:#aaa}
 </div>
 
 <body>
-<div style="width:100%; overflow:hidden; margin-bottom:20px;">
-  <img src="https://raw.githubusercontent.com/flouratec/FogSecurity-AI2/main/dashboard_quadrants.png" style="width:100%; border-radius:12px; display:block;">
+<div style="background:#111c36;padding:15px 25px;display:flex;justify-content:space-between;align-items:center;">
+  <div style="font-size:22px;color:#4fc3f7;font-weight:bold;">
+    FogSecurity-AI2 Control Panel
+  </div>
+
+  <div>
+    <button onclick="openSettings()" style="margin-right:10px;padding:8px 14px;border:none;border-radius:6px;background:#4fc3f7;color:#000;font-weight:bold;cursor:pointer;">
+      System Settings
+    </button>
+
+    <button onclick="registerNode()" style="margin-right:10px;padding:8px 14px;border:none;border-radius:6px;background:#1b5e20;color:#fff;font-weight:bold;cursor:pointer;">
+      Register Node
+    </button>
+
+    <button onclick="revokeNode()" style="padding:8px 14px;border:none;border-radius:6px;background:#b71c1c;color:#fff;font-weight:bold;cursor:pointer;">
+      Revoke Node
+    </button>
+  </div>
 </div>
 
 <section style="padding:40px 30px; background:linear-gradient(135deg,#0b1220,#111c36); border-bottom:2px solid #4fc3f7;">

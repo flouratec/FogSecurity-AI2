@@ -33,7 +33,7 @@ Contains latency and reliability tests comparing cloud vs fog processing:
 | Retrieval (100MB) | 2.1s | 0.7s | 66% |
 | Handoff latency | 580ms | 150ms | 74% |
 
-
+The FogSecurity-AI2 system was implemented as a hybrid architecture. The experimental interface was developed using web technologies, while backend fog services were implemented in PHP. AI-driven trust evaluation and performance analytics were developed using Python scripts, forming a multi-layer research prototype.
 ## 🔗 Publication
 This repository supports the master’s thesis:  
 “Security Issues in Fog Computing: An Integrated Model for Node Authentication and Service Availability” (2026)

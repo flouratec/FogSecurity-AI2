@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>FogSecurity-AI2 Research Platform</title>
+<title>FogSecurity-AI2 Research Control Panel</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -21,70 +21,35 @@ input{width:100%;padding:8px;margin-top:5px;margin-bottom:10px;border-radius:5px
 .bar{flex:1;background:#4fc3f7;transition:0.5s}
 .stat{font-size:18px;margin:5px 0}
 footer{text-align:center;padding:10px;font-size:12px;color:#aaa}
+ul{line-height:1.7;color:#d8e1ff}
 </style>
 </head>
-<div style="width:100%; overflow:hidden; margin-bottom:20px;">
-  <img src="https://raw.githubusercontent.com/flouratec/FogSecurity-AI2/main/system-dashboard-full.jpg" style="width:100%; border-radius:10px; display:block;">
-</div>
-  <div style="margin:16px;padding:14px;background:#111c36;border-radius:12px;border:1px solid rgba(79,195,247,.2)">
-  <h2 style="margin-top:0;color:#4fc3f7">How to Use the Research Control Panel</h2>
-  <ul style="line-height:1.7;color:#d8e1ff">
-    <li><b>Register Node</b> — Adds a fog node into the Authentication Node Table (ANT).</li>
-    <li><b>Simulate Attack</b> — Generates anomalous behavior and updates the AI trust engine.</li>
-    <li><b>Create Session</b> — Starts a mobility-aware IoT session linked to a fog node.</li>
-    <li><b>Force Handoff</b> — Simulates user mobility and measures session migration delay.</li>
-    <li><b>Run Latency Probe</b> — Measures processing delay within the fog layer.</li>
-    <li><b>Run Thesis Experiment</b> — Executes a full experimental scenario and records results.</li>
-    <li><b>Generate Research Report</b> — Produces a text report summarizing performance metrics.</li>
-  </ul>
-</div>
-</div>
 
 <body>
-<div style="background:#111c36;padding:15px 25px;display:flex;justify-content:space-between;align-items:center;">
-  <div style="font-size:22px;color:#4fc3f7;font-weight:bold;">
-    FogSecurity-AI2 Control Panel
-  </div>
-
-  <div>
-    <button onclick="openSettings()" style="margin-right:10px;padding:8px 14px;border:none;border-radius:6px;background:#4fc3f7;color:#000;font-weight:bold;cursor:pointer;">
-      System Settings
-    </button>
-
-    <button onclick="registerNode()" style="margin-right:10px;padding:8px 14px;border:none;border-radius:6px;background:#1b5e20;color:#fff;font-weight:bold;cursor:pointer;">
-      Register Node
-    </button>
-
-    <button onclick="revokeNode()" style="padding:8px 14px;border:none;border-radius:6px;background:#b71c1c;color:#fff;font-weight:bold;cursor:pointer;">
-      Revoke Node
-    </button>
-  </div>
-</div>
-
-<section style="padding:40px 30px; background:linear-gradient(135deg,#0b1220,#111c36); border-bottom:2px solid #4fc3f7;">
-  <h1 style="color:#4fc3f7; margin-bottom:5px;">FogSecurity-AI2</h1>
-  <h2 style="margin-top:0; font-weight:normal; color:#ccc;">
-    AI-Driven Integrated Fog Computing Security Framework
-  </h2>
-
-  <p><strong>Abstract —</strong> FogSecurity-AI2 is a research-driven fog security architecture integrating node authentication, mobility-aware session management, and AI-based adaptive trust evaluation to protect distributed IoT systems.</p>
-
-  <p><strong>Keywords:</strong> Fog Computing, AI Security, Node Authentication, Mobility Management, Adaptive Trust</p>
-
-  <p style="font-size:14px; color:#aaa;">
-    Master’s Research in Data science & Artificial Intelligence <br>
-  </p>
-</section>
 
 <header>
-<div class="logo">FogSecurity-AI2 Live Simulation</div>
-<div>
-<a href="results.html" style="color:#4fc3f7;margin-right:15px;">Results</a>
-<a href="ai-model.html" style="color:#4fc3f7;margin-right:15px;">AI Model</a>
-<a href="architecture.html" style="color:#4fc3f7;margin-right:15px;">Architecture</a>
-<a href="monitoring.html" style="color:#4fc3f7;">Monitoring</a>
-</div>
+  <div class="logo">FogSecurity-AI2 Research Control Panel</div>
 </header>
+
+<!-- 📘 Instructions -->
+<div style="margin:20px;padding:15px;background:#111c36;border-radius:12px;border:1px solid rgba(79,195,247,.2)">
+  <h2 style="color:#4fc3f7;margin-top:0">How to Use This Research Dashboard</h2>
+  <ul>
+    <li><b>Register Node</b> — Adds a fog node into the Authentication Node Table (ANT).</li>
+    <li><b>Simulate Attack</b> — Generates anomalies and updates AI trust scores.</li>
+    <li><b>Create Session</b> — Starts a mobility-aware IoT session.</li>
+    <li><b>Force Handoff</b> — Measures session migration delay.</li>
+    <li><b>Run Latency Probe</b> — Measures fog processing delay.</li>
+    <li><b>Run Thesis Experiment</b> — Executes full research scenario.</li>
+    <li><b>Generate Research Report</b> — Downloads experimental summary.</li>
+  </ul>
+</div>
+
+<!-- 🖼 Dashboard Illustration (ONLY ONCE) -->
+<div style="width:100%; overflow:hidden; margin:30px 0;">
+  <img src="https://raw.githubusercontent.com/flouratec/FogSecurity-AI2/main/dashboard_quadrants.png"
+       style="width:100%; border-radius:12px; display:block;">
+</div>
 
 <div class="container">
 
@@ -99,7 +64,7 @@ footer{text-align:center;padding:10px;font-size:12px;color:#aaa}
 <h2>Mobility Tracker (MTP)</h2>
 <input id="sessionInput" placeholder="Session ID">
 <input id="nodeInput" placeholder="Target Fog Node">
-<button class="btn" onclick="transferSession()">Transfer Session</button>
+<button class="btn" onclick="transferSession()">Create Session</button>
 <div id="sessionList"></div>
 </div>
 
@@ -108,13 +73,12 @@ footer{text-align:center;padding:10px;font-size:12px;color:#aaa}
 <div class="stat">Active Nodes: <span id="activeNodes">0</span></div>
 <div class="stat">Anomalies: <span id="anomalies">0</span></div>
 <div class="stat">Avg Trust Score: <span id="trustScore">100</span>%</div>
+<button class="btn" onclick="simulateAttack()">Simulate Attack</button>
 </div>
 
 <div class="card">
 <h2>System Performance</h2>
-Latency: 0.7s<br>
-Handoff: 150ms<br>
-Availability: 99.7%
+<button class="btn" onclick="runLatency()">Run Latency Probe</button>
 <div class="chart">
 <div class="bar" id="b1"></div>
 <div class="bar" id="b2"></div>
@@ -124,17 +88,11 @@ Availability: 99.7%
 </div>
 
 </div>
-</div> <!-- نهاية .container -->
 
-<!-- 🖼 System Dashboard Illustration -->
-<div style="width:100%; overflow:hidden; margin:30px 0;">
-  <img src="https://raw.githubusercontent.com/flouratec/FogSecurity-AI2/main/dashboard_quadrants.png"
-       style="width:100%; border-radius:12px; display:block;">
+<div style="text-align:center;margin:20px;">
+<button class="btn" onclick="runExperiment()">Run Thesis Experiment</button>
+<button class="btn" onclick="generateReport()">Generate Research Report</button>
 </div>
-
-<footer>
-FogSecurity-AI2 — AI-Driven Fog Computing Security Framework
-</footer>
 
 <footer>
 FogSecurity-AI2 — AI-Driven Fog Computing Security Framework
@@ -177,6 +135,26 @@ saveData();
 renderAll();
 }
 
+function runLatency(){
+["b1","b2","b3","b4"].forEach(id=>{
+document.getElementById(id).style.height=Math.floor(Math.random()*100)+"%";
+});
+}
+
+function runExperiment(){
+simulateAttack();
+runLatency();
+}
+
+function generateReport(){
+let report=`FogSecurity-AI2 Research Report\nNodes: ${nodes.length}\nSessions: ${sessions.length}\nAnomalies: ${anomalies}`;
+let blob=new Blob([report],{type:"text/plain"});
+let a=document.createElement("a");
+a.href=URL.createObjectURL(blob);
+a.download="FogSecurity-AI2_Report.txt";
+a.click();
+}
+
 function renderNodes(){
 let html="";
 nodes.forEach(n=>{
@@ -201,926 +179,13 @@ let avg=nodes.length?Math.round(nodes.reduce((a,b)=>a+b.trust,0)/nodes.length):1
 document.getElementById("trustScore").innerText=avg;
 }
 
-function animateBars(){
-["b1","b2","b3","b4"].forEach(id=>{
-document.getElementById(id).style.height=Math.floor(Math.random()*100)+"%";
-});
-}
-
 function renderAll(){
 renderNodes();
 renderSessions();
 renderStats();
-animateBars();
 }
 
 renderAll();
-</script>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>FogSecurity-AI2 | Research Control Center</title>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<style>
-  :root{
-    --bg:#0b1220;
-    --card:#111c36;
-    --accent:#4fc3f7;
-    --ok:#1b5e20;
-    --warn:#b58900;
-    --bad:#b71c1c;
-    --muted:#a8b3cf;
-  }
-  body{margin:0;font-family:Arial;background:var(--bg);color:#fff}
-  a{color:var(--accent);text-decoration:none}
-  header{
-    display:flex;justify-content:space-between;align-items:center;
-    padding:14px 18px;background:var(--card);position:sticky;top:0;z-index:10;
-    border-bottom:1px solid rgba(79,195,247,.25);
-  }
-  .logo{font-weight:bold;font-size:18px;color:var(--accent)}
-  .nav a{margin-left:14px;color:var(--accent);font-size:14px;opacity:.9}
-  .nav a:hover{opacity:1;text-decoration:underline}
-
-  .hero{
-    padding:22px 18px;
-    background:linear-gradient(135deg,#0b1220,#111c36);
-    border-bottom:2px solid rgba(79,195,247,.35);
-  }
-  .hero h1{margin:0;color:var(--accent);font-size:26px}
-  .hero p{margin:8px 0 0 0;color:#d8e1ff;line-height:1.55}
-  .hero .meta{margin-top:10px;color:var(--muted);font-size:13px}
-
-  .grid{
-    display:grid;grid-template-columns:1fr 1fr;
-    gap:16px;padding:16px;
-  }
-  @media (max-width: 980px){ .grid{grid-template-columns:1fr} }
-
-  .card{
-    background:var(--card);padding:14px;border-radius:12px;
-    box-shadow:0 10px 24px rgba(0,0,0,.25);
-    border:1px solid rgba(79,195,247,.12);
-  }
-  .card h2{margin:0 0 10px 0;font-size:16px}
-  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-  input, select{
-    background:#0e1730;border:1px solid rgba(255,255,255,.08);
-    color:#fff;border-radius:8px;padding:9px 10px;outline:none;
-  }
-  input{min-width:240px}
-  .btn{
-    padding:9px 12px;border:none;border-radius:8px;
-    background:var(--accent);color:#001018;font-weight:bold;cursor:pointer;
-  }
-  .btn.secondary{background:#243a6b;color:#fff}
-  .btn.ok{background:var(--ok);color:#fff}
-  .btn.bad{background:var(--bad);color:#fff}
-  .btn.warn{background:var(--warn);color:#111}
-  .btn:active{transform:translateY(1px)}
-
-  .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-  @media (max-width:980px){ .kpis{grid-template-columns:1fr} }
-  .kpi{
-    background:#0e1730;border:1px solid rgba(255,255,255,.08);
-    border-radius:10px;padding:10px;
-  }
-  .kpi .label{color:var(--muted);font-size:12px}
-  .kpi .value{font-size:20px;margin-top:6px;color:#fff;font-weight:bold}
-  .badge{display:inline-block;padding:3px 8px;border-radius:999px;font-size:12px}
-  .b-ok{background:rgba(27,94,32,.9)}
-  .b-warn{background:rgba(181,137,0,.9);color:#111}
-  .b-bad{background:rgba(183,28,28,.9)}
-  .table{
-    width:100%;border-collapse:collapse;margin-top:10px;font-size:13px;
-    overflow:hidden;border-radius:10px;
-  }
-  .table th,.table td{padding:10px;border-bottom:1px solid rgba(255,255,255,.06);text-align:left}
-  .table th{color:#cfe6ff;font-weight:bold;background:#0e1730}
-  .table tr:hover td{background:rgba(79,195,247,.06)}
-  .small{color:var(--muted);font-size:12px}
-
-  .log{
-    max-height:260px;overflow:auto;background:#0e1730;
-    border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:10px;
-    font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-    font-size:12px;line-height:1.5;
-  }
-  footer{padding:14px;text-align:center;color:var(--muted);font-size:12px}
-  .figure{
-    margin:16px;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.08);
-    background:var(--card);
-  }
-  .figure img{width:100%;display:block}
-  .figure figcaption{padding:10px 12px;color:var(--muted);font-size:13px}
-</style>
-</head>
-
-<body>
-
-<header>
-  <div class="logo">FogSecurity-AI2 — Research Control Center</div>
-  <div class="nav">
-    <a href="https://flouratec.github.io/FogSecurity-AI2/" target="_blank">Live</a>
-    <a href="https://github.com/flouratec/FogSecurity-AI2" target="_blank">Repo</a>
-  </div>
-</header>
-
-<section class="hero">
-  <h1>Secure Fog Computing: ANT + MTP + AI Trust Engine</h1>
-  <p>
-    This dashboard is a research-grade interactive prototype that implements node authentication (ANT),
-    mobility-aware session continuity (MTP), an AI-inspired adaptive trust engine, performance logging (latency/handoff),
-    attack simulation, and a security event timeline.
-  </p>
-  <div class="meta">
-    Supervisor: Dr. BUSHRAH AL-SHARIF • Islamic University of Minnesota • FogSecurity-AI2
-  </div>
-</section>
-
-<!-- Optional: place your dashboard image BELOW the control center -->
-<figure class="figure">
-  <img src="https://raw.githubusercontent.com/flouratec/FogSecurity-AI2/main/dashboard_quadrants.png" alt="FogSecurity-AI2 dashboard illustration">
-  <figcaption>Figure: Visual overview of the integrated modules (Authentication, Mobility, AI Trust, Performance).</figcaption>
-</figure>
-
-<div class="grid">
-
-  <!-- KPI / Research Summary -->
-  <div class="card">
-    <h2>Research KPIs (Live)</h2>
-    <div class="kpis">
-      <div class="kpi">
-        <div class="label">Active Nodes</div>
-        <div class="value" id="kpiNodes">0</div>
-      </div>
-      <div class="kpi">
-        <div class="label">Active Sessions</div>
-        <div class="value" id="kpiSessions">0</div>
-      </div>
-      <div class="kpi">
-        <div class="label">Avg Trust Score</div>
-        <div class="value"><span id="kpiTrust">100</span>%</div>
-      </div>
-      <div class="kpi">
-        <div class="label">Avg Latency</div>
-        <div class="value"><span id="kpiLatency">0</span> ms</div>
-      </div>
-      <div class="kpi">
-        <div class="label">Avg Handoff</div>
-        <div class="value"><span id="kpiHandoff">0</span> ms</div>
-      </div>
-      <div class="kpi">
-        <div class="label">Anomalies Detected</div>
-        <div class="value" id="kpiAnoms">0</div>
-      </div>
-    </div>
-
-    <div class="row" style="margin-top:12px;">
-      <button class="btn secondary" onclick="resetAll()">Reset Data</button>
-      <button class="btn secondary" onclick="exportCSV()">Export Logs (CSV)</button>
-    </div>
-    <div class="small" style="margin-top:8px;">
-      Data is persisted via <b>localStorage</b> to keep your experiments consistent across refreshes.
-    </div>
-  </div>
-
-  <!-- Performance Chart -->
-  <div class="card">
-    <h2>Performance Monitor (Chart.js)</h2>
-    <canvas id="perfChart" height="140"></canvas>
-    <div class="row" style="margin-top:10px;">
-      <button class="btn" onclick="runLatencyProbe()">Run Latency Probe</button>
-      <button class="btn secondary" onclick="refreshChart()">Refresh Chart</button>
-    </div>
-    <div class="small" style="margin-top:8px;">
-      Latency is measured using <code>performance.now()</code> around controlled operations (research probe).
-    </div>
-  </div>
-
-  <!-- ANT -->
-  <div class="card">
-    <h2>Authentication Node Table (ANT)</h2>
-    <div class="row">
-      <input id="macInput" placeholder="Enter MAC Address e.g. 00:1A:2B:3C:4D:5E" />
-      <button class="btn ok" onclick="registerNode()">Register Node</button>
-      <button class="btn bad" onclick="revokeSelectedNode()">Revoke Node</button>
-    </div>
-    <div class="row" style="margin-top:8px;">
-      <select id="nodeSelect"></select>
-      <button class="btn warn" onclick="simulateAttack()">Simulate Attack</button>
-      <button class="btn secondary" onclick="healNode()">Self-Heal Node</button>
-    </div>
-    <table class="table" id="nodesTable"></table>
-    <div class="small">Auto-status: Trusted &gt;= 70 • Suspicious 40–69 • Banned &lt; 40</div>
-  </div>
-
-  <!-- MTP -->
-  <div class="card">
-    <h2>Mobility Tracker Protocol (MTP) — Live Sessions</h2>
-    <div class="row">
-      <input id="sessionIdInput" placeholder="Session ID e.g. S-101" />
-      <select id="sessionNodeSelect"></select>
-      <button class="btn ok" onclick="createSession()">Create Session</button>
-      <button class="btn" onclick="forceHandoff()">Force Handoff</button>
-    </div>
-    <table class="table" id="sessionsTable"></table>
-    <div class="small">Force Handoff logs time and updates session continuity status.</div>
-  </div>
-
-  <!-- AI Trust Engine Panel -->
-  <div class="card">
-    <h2>AI Trust Engine</h2>
-    <div class="row">
-      <label class="small">Anomaly Sensitivity</label>
-      <select id="aiSensitivity" onchange="setSensitivity()">
-        <option value="0.8">Low</option>
-        <option value="1.0" selected>Medium</option>
-        <option value="1.3">High</option>
-      </select>
-      <label class="small">Auto-Isolation</label>
-      <select id="autoIso" onchange="setAutoIso()">
-        <option value="on" selected>ON</option>
-        <option value="off">OFF</option>
-      </select>
-    </div>
-
-    <div style="margin-top:10px;background:#0e1730;border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:10px;">
-      <div class="small">Trust Update Rule (research prototype):</div>
-      <div style="margin-top:8px;">
-        <code style="color:#cfe6ff;">
-          trust = trust − round(anomaly_score × 12 × sensitivity) + uptime_bonus
-        </code>
-      </div>
-      <div class="small" style="margin-top:8px;">
-        Nodes are classified and (optionally) isolated automatically based on thresholds.
-      </div>
-    </div>
-  </div>
-
-  <!-- Security Log -->
-  <div class="card">
-    <h2>Security Event Log</h2>
-    <div class="log" id="logBox"></div>
-    <div class="row" style="margin-top:10px;">
-      <button class="btn secondary" onclick="clearLog()">Clear Log</button>
-      <button class="btn secondary" onclick="seedDemo()">Seed Demo Data</button>
-    </div>
-    <div class="small">This log is suitable for citations in the thesis implementation/results chapters.</div>
-  </div>
-
-</div>
-
-<footer>
-  FogSecurity-AI2 — AI-Driven Fog Computing Security Framework • Interactive Research Prototype
-</footer>
-
-<script>
-/* =========================
-   Storage + State
-========================= */
-const STORAGE_KEY = "fogsecurity_ai2_state_v1";
-
-let state = loadState();
-
-function loadState(){
-  const raw = localStorage.getItem(STORAGE_KEY);
-  if(raw){
-    try { return JSON.parse(raw); } catch(e){}
-  }
-  return {
-    nodes: [],          // {id, mac, trust, status, lastActivity}
-    sessions: [],       // {id, nodeId, status, lastHandoffMs, lastLatencyMs, updatedAt}
-    logs: [],           // {ts, type, msg}
-    metrics: [],        // {ts, latencyMs, handoffMs}
-    anomalies: 0,
-    sensitivity: 1.0,
-    autoIso: "on"
-  };
-}
-
-function saveState(){
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-}
-
-/* =========================
-   Utilities
-========================= */
-function nowTS(){
-  const d = new Date();
-  return d.toLocaleString();
-}
-function uid(prefix){
-  return prefix + "-" + Math.random().toString(16).slice(2,8).toUpperCase();
-}
-function clamp(n,min,max){ return Math.max(min, Math.min(max,n)); }
-
-function logEvent(type, msg){
-  state.logs.unshift({ts: nowTS(), type, msg});
-  // keep last 120
-  state.logs = state.logs.slice(0,120);
-  saveState();
-  renderLog();
-}
-
-function setSensitivity(){
-  state.sensitivity = parseFloat(document.getElementById("aiSensitivity").value);
-  saveState();
-  logEvent("AI", "Sensitivity set to " + state.sensitivity);
-}
-function setAutoIso(){
-  state.autoIso = document.getElementById("autoIso").value;
-  saveState();
-  logEvent("AI", "Auto-Isolation set to " + state.autoIso.toUpperCase());
-}
-
-/* =========================
-   AI Trust Engine
-========================= */
-function statusFromTrust(trust){
-  if(trust >= 70) return "Trusted";
-  if(trust >= 40) return "Suspicious";
-  return "Banned";
-}
-function badgeClass(status){
-  if(status === "Trusted") return "b-ok";
-  if(status === "Suspicious") return "b-warn";
-  return "b-bad";
-}
-
-function applyTrustUpdate(nodeId, anomalyScore){
-  const node = state.nodes.find(n => n.id === nodeId);
-  if(!node) return;
-
-  const sensitivity = state.sensitivity || 1.0;
-  const uptimeBonus = 1; // small positive drift to reflect stable behavior
-  const penalty = Math.round(anomalyScore * 12 * sensitivity);
-
-  node.trust = clamp(node.trust - penalty + uptimeBonus, 0, 100);
-  node.status = statusFromTrust(node.trust);
-  node.lastActivity = nowTS();
-
-  if(state.autoIso === "on" && node.status === "Banned"){
-    logEvent("ISOLATION", `Node ${node.mac} automatically isolated (Banned).`);
-  }
-}
-
-/* =========================
-   ANT: Nodes
-========================= */
-function registerNode(){
-  const mac = (document.getElementById("macInput").value || "").trim();
-  if(!mac) return;
-
-  // prevent duplicates
-  const exists = state.nodes.some(n => n.mac.toLowerCase() === mac.toLowerCase());
-  if(exists){
-    logEvent("ANT", `Duplicate registration blocked for MAC ${mac}.`);
-    return;
-  }
-
-  const node = {
-    id: uid("FN"),
-    mac,
-    trust: 100,
-    status: "Trusted",
-    lastActivity: nowTS()
-  };
-  state.nodes.unshift(node);
-  saveState();
-  logEvent("ANT", `Node registered: ${mac} (Trusted).`);
-  renderAll();
-}
-
-function revokeSelectedNode(){
-  const sel = document.getElementById("nodeSelect").value;
-  const node = state.nodes.find(n => n.id === sel);
-  if(!node) return;
-
-  node.trust = 0;
-  node.status = "Banned";
-  node.lastActivity = nowTS();
-  saveState();
-  logEvent("ANT", `Node revoked: ${node.mac} (Banned).`);
-  renderAll();
-}
-
-function healNode(){
-  const sel = document.getElementById("nodeSelect").value;
-  const node = state.nodes.find(n => n.id === sel);
-  if(!node) return;
-
-  node.trust = clamp(node.trust + 15, 0, 100);
-  node.status = statusFromTrust(node.trust);
-  node.lastActivity = nowTS();
-  saveState();
-  logEvent("RECOVERY", `Self-heal applied to ${node.mac}. Trust now ${node.trust}%.`);
-  renderAll();
-}
-
-/* =========================
-   Attack Simulator
-========================= */
-function simulateAttack(){
-  if(state.nodes.length === 0){
-    logEvent("ATTACK", "No nodes available to attack.");
-    return;
-  }
-
-  state.anomalies += 1;
-
-  // choose a target: selected if available, else random
-  const sel = document.getElementById("nodeSelect").value;
-  let target = state.nodes.find(n => n.id === sel);
-  if(!target){
-    target = state.nodes[Math.floor(Math.random() * state.nodes.length)];
-  }
-
-  // anomaly score 0.4..1.0
-  const anomalyScore = Math.round((0.4 + Math.random()*0.6)*100)/100;
-
-  applyTrustUpdate(target.id, anomalyScore);
-
-  saveState();
-  logEvent("ATTACK", `Anomaly detected on ${target.mac}. Score=${anomalyScore}. Trust=${target.trust}%, Status=${target.status}.`);
-  renderAll();
-}
-
-/* =========================
-   MTP: Sessions
-========================= */
-function createSession(){
-  const sid = (document.getElementById("sessionIdInput").value || "").trim();
-  const nodeId = document.getElementById("sessionNodeSelect").value;
-
-  if(!sid){ logEvent("MTP","Session ID is required."); return; }
-  if(!nodeId){ logEvent("MTP","Select a target node."); return; }
-
-  const node = state.nodes.find(n => n.id === nodeId);
-  if(!node){ logEvent("MTP","Invalid node selection."); return; }
-  if(node.status === "Banned"){ logEvent("MTP",`Cannot attach session to BANNED node: ${node.mac}.`); return; }
-
-  const exists = state.sessions.some(s => s.id.toLowerCase() === sid.toLowerCase());
-  if(exists){ logEvent("MTP",`Session already exists: ${sid}.`); return; }
-
-  const session = {
-    id: sid,
-    nodeId: node.id,
-    status: "Active",
-    lastHandoffMs: 0,
-    lastLatencyMs: 0,
-    updatedAt: nowTS()
-  };
-  state.sessions.unshift(session);
-  saveState();
-  logEvent("MTP", `Session created: ${sid} on node ${node.mac}.`);
-  renderAll();
-}
-
-function forceHandoff(){
-  const sid = (document.getElementById("sessionIdInput").value || "").trim();
-  const targetNodeId = document.getElementById("sessionNodeSelect").value;
-
-  const session = state.sessions.find(s => s.id.toLowerCase() === sid.toLowerCase());
-  if(!session){ logEvent("MTP",`Session not found: ${sid}.`); return; }
-
-  const target = state.nodes.find(n => n.id === targetNodeId);
-  if(!target){ logEvent("MTP","Select a valid target node."); return; }
-  if(target.status === "Banned"){ logEvent("MTP",`Target node is BANNED: ${target.mac}.`); return; }
-
-  // measure handoff time (simulate state serialization + transfer)
-  const t0 = performance.now();
-
-  // simulate heavier processing for realism
-  let junk = 0;
-  for(let i=0;i<25000;i++){ junk += Math.sqrt(i) * Math.random(); }
-
-  const t1 = performance.now();
-  const handoffMs = Math.round(t1 - t0);
-
-  session.nodeId = target.id;
-  session.lastHandoffMs = handoffMs;
-  session.updatedAt = nowTS();
-
-  // log metric
-  pushMetric({latencyMs: 0, handoffMs});
-  saveState();
-
-  logEvent("MTP", `Handoff executed for ${session.id} → ${target.mac} in ${handoffMs} ms.`);
-  renderAll();
-}
-
-/* =========================
-   Performance Monitor
-========================= */
-function pushMetric({latencyMs, handoffMs}){
-  state.metrics.unshift({
-    ts: nowTS(),
-    latencyMs: latencyMs || 0,
-    handoffMs: handoffMs || 0
-  });
-  state.metrics = state.metrics.slice(0, 40);
-  saveState();
-}
-
-function runLatencyProbe(){
-  // measure a controlled operation latency
-  const t0 = performance.now();
-
-  // simulate payload processing (fog-local compute)
-  let sum = 0;
-  for(let i=0;i<40000;i++){ sum += Math.sin(i) * Math.cos(i/2); }
-
-  const t1 = performance.now();
-  const latencyMs = Math.round(t1 - t0);
-
-  pushMetric({latencyMs, handoffMs: 0});
-  logEvent("PERF", `Latency probe recorded: ${latencyMs} ms.`);
-  renderAll();
-}
-
-let chart;
-function refreshChart(){
-  const data = state.metrics.slice(0,20).reverse();
-  const labels = data.map(m => m.ts.split(",")[0] + " " + m.ts.split(",")[1]?.trim().slice(0,5));
-  const lat = data.map(m => m.latencyMs);
-  const ho = data.map(m => m.handoffMs);
-
-  const ctx = document.getElementById("perfChart").getContext("2d");
-  if(chart) chart.destroy();
-
-  chart = new Chart(ctx, {
-    type: "line",
-    data: {
-      labels,
-      datasets: [
-        {label:"Latency (ms)", data: lat, tension:.35, borderColor:"#4fc3f7"},
-        {label:"Handoff (ms)", data: ho, tension:.35, borderColor:"#ff6384"}
-      ]
-    },
-    options: {
-      plugins:{legend:{labels:{color:"#d8e1ff"}}},
-      scales:{
-        x:{ticks:{color:"#a8b3cf"}},
-        y:{ticks:{color:"#a8b3cf"}}
-      }
-    }
-  });
-}
-
-/* =========================
-   Rendering
-========================= */
-function renderNodes(){
-  const table = document.getElementById("nodesTable");
-  const sel = document.getElementById("nodeSelect");
-  const sel2 = document.getElementById("sessionNodeSelect");
-
-  // selects
-  sel.innerHTML = "";
-  sel2.innerHTML = "";
-
-  state.nodes.forEach(n => {
-    const opt = document.createElement("option");
-    opt.value = n.id;
-    opt.textContent = `${n.mac} (${n.status}, ${n.trust}%)`;
-    sel.appendChild(opt);
-
-    const opt2 = document.createElement("option");
-    opt2.value = n.id;
-    opt2.textContent = `${n.mac} (${n.status})`;
-    sel2.appendChild(opt2);
-  });
-
-  // table
-  let html = `
-    <tr>
-      <th>MAC</th>
-      <th>Status</th>
-      <th>Trust</th>
-      <th>Last Activity</th>
-    </tr>
-  `;
-  state.nodes.forEach(n => {
-    html += `
-      <tr>
-        <td>${n.mac}</td>
-        <td><span class="badge ${badgeClass(n.status)}">${n.status}</span></td>
-        <td>${n.trust}%</td>
-        <td class="small">${n.lastActivity}</td>
-      </tr>
-    `;
-  });
-
-  if(state.nodes.length === 0){
-    html += `<tr><td colspan="4" class="small">No nodes registered yet. Start by adding a MAC address.</td></tr>`;
-  }
-
-  table.innerHTML = html;
-}
-
-function renderSessions(){
-  const table = document.getElementById("sessionsTable");
-  let html = `
-    <tr>
-      <th>Session</th>
-      <th>Current Node</th>
-      <th>Status</th>
-      <th>Last Handoff</th>
-      <th>Updated</th>
-    </tr>
-  `;
-
-  state.sessions.forEach(s => {
-    const node = state.nodes.find(n => n.id === s.nodeId);
-    const nodeLabel = node ? node.mac : "Unknown";
-    html += `
-      <tr>
-        <td>${s.id}</td>
-        <td>${nodeLabel}</td>
-        <td><span class="badge ${badgeClass("Trusted")}">${s.status}</span></td>
-        <td>${s.lastHandoffMs || 0} ms</td>
-        <td class="small">${s.updatedAt}</td>
-      </tr>
-    `;
-  });
-
-  if(state.sessions.length === 0){
-    html += `<tr><td colspan="5" class="small">No sessions yet. Create a session and test handoff.</td></tr>`;
-  }
-
-  table.innerHTML = html;
-}
-
-function renderKPIs(){
-  document.getElementById("kpiNodes").textContent = state.nodes.length;
-  document.getElementById("kpiSessions").textContent = state.sessions.length;
-  document.getElementById("kpiAnoms").textContent = state.anomalies;
-
-  const avgTrust = state.nodes.length
-    ? Math.round(state.nodes.reduce((a,b)=>a+b.trust,0)/state.nodes.length)
-    : 100;
-  document.getElementById("kpiTrust").textContent = avgTrust;
-
-  const metrics = state.metrics;
-  const lat = metrics.filter(m=>m.latencyMs>0).map(m=>m.latencyMs);
-  const ho  = metrics.filter(m=>m.handoffMs>0).map(m=>m.handoffMs);
-
-  const avg = arr => arr.length ? Math.round(arr.reduce((a,b)=>a+b,0)/arr.length) : 0;
-  document.getElementById("kpiLatency").textContent = avg(lat);
-  document.getElementById("kpiHandoff").textContent = avg(ho);
-
-  // sync dropdowns
-  const sens = document.getElementById("aiSensitivity");
-  sens.value = String(state.sensitivity || 1.0);
-
-  const iso = document.getElementById("autoIso");
-  iso.value = state.autoIso || "on";
-}
-
-function renderLog(){
-  const box = document.getElementById("logBox");
-  if(state.logs.length === 0){
-    box.textContent = "[no events yet]";
-    return;
-  }
-  box.innerHTML = state.logs.map(l => `[${l.ts}] <b>${l.type}</b> — ${l.msg}`).join("<br>");
-}
-
-function renderAll(){
-  renderNodes();
-  renderSessions();
-  renderKPIs();
-  renderLog();
-  refreshChart();
-}
-
-/* =========================
-   Admin Actions
-========================= */
-function clearLog(){
-  state.logs = [];
-  saveState();
-  renderLog();
-}
-function resetAll(){
-  if(!confirm("Reset all stored data (nodes, sessions, logs, metrics)?")) return;
-  localStorage.removeItem(STORAGE_KEY);
-  state = loadState();
-  logEvent("SYSTEM","State reset completed.");
-  renderAll();
-}
-
-function exportCSV(){
-  const rows = [
-    ["timestamp","type","message"].join(","),
-    ...state.logs.map(l => [l.ts, l.type, `"${l.msg.replaceAll('"','""')}"`].join(","))
-  ];
-  const blob = new Blob([rows.join("\n")], {type:"text/csv"});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "fogsecurity_ai2_security_log.csv";
-  a.click();
-  URL.revokeObjectURL(url);
-  logEvent("SYSTEM","Security log exported to CSV.");
-}
-
-function seedDemo(){
-  // seed nodes
-  if(state.nodes.length === 0){
-    state.nodes = [
-      {id:uid("FN"), mac:"00:1A:2B:3C:4D:5E", trust:92, status:"Trusted", lastActivity:nowTS()},
-      {id:uid("FN"), mac:"88:AF:91:77:BC:22", trust:58, status:"Suspicious", lastActivity:nowTS()},
-      {id:uid("FN"), mac:"10:9C:5A:AA:11:02", trust:33, status:"Banned", lastActivity:nowTS()}
-    ];
-  }
-  // seed sessions
-  if(state.sessions.length === 0 && state.nodes.length > 0){
-    const n0 = state.nodes[0];
-    state.sessions = [
-      {id:"S-101", nodeId:n0.id, status:"Active", lastHandoffMs:0, lastLatencyMs:0, updatedAt:nowTS()}
-    ];
-  }
-  // seed metrics
-  if(state.metrics.length === 0){
-    const base = 120;
-    for(let i=0;i<12;i++){
-      state.metrics.unshift({ts: nowTS(), latencyMs: base + Math.round(Math.random()*40), handoffMs: 0});
-    }
-  }
-  saveState();
-  logEvent("SYSTEM","Demo data seeded.");
-  renderAll();
-}
-
-/* init */
-logEvent("SYSTEM", "Dashboard loaded successfully.");
-renderAll();
-</script>
-
-</body>
-</html>
-
-</body>
-</html>
-
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<style>
-:root{
- --bg:#0b1220; --card:#111c36; --accent:#4fc3f7;
- --ok:#1b5e20; --warn:#b58900; --bad:#b71c1c; --muted:#a8b3cf;
-}
-body{margin:0;font-family:Arial;background:var(--bg);color:#fff}
-header{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:var(--card)}
-.logo{font-weight:bold;color:var(--accent)}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:16px}
-.card{background:var(--card);padding:14px;border-radius:12px}
-.btn{padding:8px 12px;border:none;border-radius:6px;background:var(--accent);cursor:pointer;font-weight:bold}
-.table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px}
-.table th,.table td{padding:8px;border-bottom:1px solid rgba(255,255,255,.08)}
-.badge{padding:3px 8px;border-radius:12px;font-size:12px}
-.b-ok{background:#1b5e20}.b-warn{background:#b58900;color:#111}.b-bad{background:#b71c1c}
-.log{background:#0e1730;padding:10px;border-radius:8px;font-size:12px;max-height:200px;overflow:auto}
-footer{text-align:center;padding:10px;color:var(--muted);font-size:12px}
-</style>
-</head>
-
-<body>
-
-<header>
-  <div class="logo">FogSecurity-AI2 — Research Control Center</div>
-</header>
-
-<div class="grid">
-
-<div class="card">
-<h2>Research KPIs (Live)</h2>
-<div>Active Nodes: <b id="kpiNodes">0</b></div>
-<div>Active Sessions: <b id="kpiSessions">0</b></div>
-<div>Avg Trust Score: <b id="kpiTrust">100</b>%</div>
-<div>Avg Latency: <b id="kpiLatency">0</b> ms</div>
-<div>Avg Handoff: <b id="kpiHandoff">0</b> ms</div>
-<div>Anomalies: <b id="kpiAnoms">0</b></div>
-<br>
-<button class="btn" onclick="runThesisExperiment()">Run Thesis Experiment</button>
-<button class="btn" onclick="generateResearchReport()">Generate Research Report</button>
-</div>
-
-<div class="card">
-<h2>Performance Monitor</h2>
-<canvas id="perfChart"></canvas>
-<button class="btn" onclick="runLatencyProbe()">Run Latency Probe</button>
-</div>
-
-<div class="card">
-<h2>Authentication Node Table (ANT)</h2>
-<input id="macInput" placeholder="Enter MAC Address">
-<button class="btn" onclick="registerNode()">Register Node</button>
-<table class="table" id="nodesTable"></table>
-</div>
-
-<div class="card">
-<h2>Mobility Tracker Protocol (MTP)</h2>
-<input id="sessionIdInput" placeholder="Session ID">
-<button class="btn" onclick="createSession()">Create Session</button>
-<table class="table" id="sessionsTable"></table>
-</div>
-
-<div class="card">
-<h2>Security Event Log</h2>
-<div class="log" id="logBox"></div>
-</div>
-
-</div>
-
-<footer>FogSecurity-AI2 Research Dashboard</footer>
-
-<script>
-const state={nodes:[],sessions:[],logs:[],metrics:[],anomalies:0};
-
-function logEvent(t,m){state.logs.unshift(`[${new Date().toLocaleTimeString()}] ${t} - ${m}`);renderLog();}
-function renderLog(){document.getElementById("logBox").innerHTML=state.logs.join("<br>");}
-
-function registerNode(){
- let mac=document.getElementById("macInput").value;
- state.nodes.push({mac,trust:100,status:"Trusted"});
- logEvent("ANT","Node Registered: "+mac);
- renderNodes();
-}
-
-function renderNodes(){
- let html="<tr><th>MAC</th><th>Status</th><th>Trust</th></tr>";
- state.nodes.forEach(n=>{
-  html+=`<tr><td>${n.mac}</td><td><span class="badge b-ok">${n.status}</span></td><td>${n.trust}%</td></tr>`;
- });
- document.getElementById("nodesTable").innerHTML=html;
- updateKPIs();
-}
-
-function createSession(){
- let id=document.getElementById("sessionIdInput").value;
- state.sessions.push({id,status:"Active"});
- logEvent("MTP","Session Created: "+id);
- renderSessions();
-}
-
-function renderSessions(){
- let html="<tr><th>Session</th><th>Status</th></tr>";
- state.sessions.forEach(s=>{
-  html+=`<tr><td>${s.id}</td><td>${s.status}</td></tr>`;
- });
- document.getElementById("sessionsTable").innerHTML=html;
- updateKPIs();
-}
-
-function runLatencyProbe(){
- let t0=performance.now();for(let i=0;i<30000;i++){Math.sqrt(i);}let t1=performance.now();
- let ms=Math.round(t1-t0);
- state.metrics.push(ms);
- logEvent("PERF","Latency: "+ms+" ms");
- updateKPIs();
-}
-
-function runThesisExperiment(){
- state.anomalies+=2;
- logEvent("EXPERIMENT","Full thesis scenario executed");
- updateKPIs();
-}
-
-function generateResearchReport(){
- let report=`FogSecurity-AI2 Research Report
-Nodes: ${state.nodes.length}
-Sessions: ${state.sessions.length}
-Anomalies: ${state.anomalies}`;
- let blob=new Blob([report],{type:"text/plain"});
- let a=document.createElement("a");
- a.href=URL.createObjectURL(blob);
- a.download="FogSecurity-AI2_Report.txt";
- a.click();
-}
-
-function updateKPIs(){
- document.getElementById("kpiNodes").innerText=state.nodes.length;
- document.getElementById("kpiSessions").innerText=state.sessions.length;
- document.getElementById("kpiAnoms").innerText=state.anomalies;
- document.getElementById("kpiTrust").innerText=state.nodes.length?Math.round(state.nodes.reduce((a,b)=>a+b.trust,0)/state.nodes.length):100;
- document.getElementById("kpiLatency").innerText=state.metrics.length?state.metrics[state.metrics.length-1]:0;
-}
-
-renderNodes();renderSessions();updateKPIs();
-</script>
-## 🛠 Technology Stack
-
-FogSecurity-AI2 was developed using a hybrid multi-layered architecture combining web technologies, fog-layer services, and AI-driven analytics.
 </script>
 
 </body>

@@ -1,0 +1,5 @@
+node_id,anomaly_score,latency_ms,handoff_ms
+FN-01,0.2,110,40
+FN-02,0.5,135,52
+FN-03,0.8,160,63
+FN-04,0.1,98,35

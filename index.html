@@ -242,8 +242,10 @@ function save(){localStorage.setItem("nodes",JSON.stringify(nodes));localStorage
 function registerNode(){
 const mac=document.getElementById("macInput").value;
 if(!mac) return;
-nodes.push({mac,status:"Trusted",trust:100});
-save();render();
+nodes.push({mac: mac, status:"Trusted", trust:100});
+addLog("ANT — Node registered: " + mac);
+save();
+render();
 }
 
 function simulateAttack(){
@@ -251,7 +253,9 @@ if(nodes.length===0)return;
 let i=Math.floor(Math.random()*nodes.length);
 nodes[i].trust-=30;
 if(nodes[i].trust<50)nodes[i].status="Banned";
-anomalies++;save();render();
+anomalies++;
+addLog("AI — Anomaly detected at node " + nodes[idx].mac);
+ save();render();
 }
 
 function transferSession(){
@@ -259,6 +263,8 @@ const s=document.getElementById("sessionInput").value;
 const n=document.getElementById("nodeInput").value;
 if(!s||!n)return;
 sessions.push({id:s,node:n});
+ addLog("MTP — Session " + s + " handed to " + n);
+
 save();render();
 }
 
@@ -311,6 +317,8 @@ render();
 <!-- 🧠 AI Trust Engine -->
 <div class="card">
   <h2>AI Trust Engine</h2>
+document.getElementById("trustInfo").innerText =
+"Nodes auto-classified based on trust score thresholds.";
 
   <label>Anomaly Sensitivity</label>
   <select id="sensitivity">

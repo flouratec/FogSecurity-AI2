@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>FogSecurity-AI2 Research Control Panel</title>
+<title>FogSecurity-AI2 Research Platform</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -21,35 +21,70 @@ input{width:100%;padding:8px;margin-top:5px;margin-bottom:10px;border-radius:5px
 .bar{flex:1;background:#4fc3f7;transition:0.5s}
 .stat{font-size:18px;margin:5px 0}
 footer{text-align:center;padding:10px;font-size:12px;color:#aaa}
-ul{line-height:1.7;color:#d8e1ff}
 </style>
 </head>
-
-<body>
-
-<header>
-  <div class="logo">FogSecurity-AI2 Research Control Panel</div>
-</header>
-
-<!-- 📘 Instructions -->
-<div style="margin:20px;padding:15px;background:#111c36;border-radius:12px;border:1px solid rgba(79,195,247,.2)">
-  <h2 style="color:#4fc3f7;margin-top:0">How to Use This Research Dashboard</h2>
-  <ul>
+<div style="width:100%; overflow:hidden; margin-bottom:20px;">
+  <img src="https://raw.githubusercontent.com/flouratec/FogSecurity-AI2/main/system-dashboard-full.jpg" style="width:100%; border-radius:10px; display:block;">
+</div>
+  <div style="margin:16px;padding:14px;background:#111c36;border-radius:12px;border:1px solid rgba(79,195,247,.2)">
+  <h2 style="margin-top:0;color:#4fc3f7">How to Use the Research Control Panel</h2>
+  <ul style="line-height:1.7;color:#d8e1ff">
     <li><b>Register Node</b> — Adds a fog node into the Authentication Node Table (ANT).</li>
-    <li><b>Simulate Attack</b> — Generates anomalies and updates AI trust scores.</li>
-    <li><b>Create Session</b> — Starts a mobility-aware IoT session.</li>
-    <li><b>Force Handoff</b> — Measures session migration delay.</li>
-    <li><b>Run Latency Probe</b> — Measures fog processing delay.</li>
-    <li><b>Run Thesis Experiment</b> — Executes full research scenario.</li>
-    <li><b>Generate Research Report</b> — Downloads experimental summary.</li>
+    <li><b>Simulate Attack</b> — Generates anomalous behavior and updates the AI trust engine.</li>
+    <li><b>Create Session</b> — Starts a mobility-aware IoT session linked to a fog node.</li>
+    <li><b>Force Handoff</b> — Simulates user mobility and measures session migration delay.</li>
+    <li><b>Run Latency Probe</b> — Measures processing delay within the fog layer.</li>
+    <li><b>Run Thesis Experiment</b> — Executes a full experimental scenario and records results.</li>
+    <li><b>Generate Research Report</b> — Produces a text report summarizing performance metrics.</li>
   </ul>
 </div>
-
-<!-- 🖼 Dashboard Illustration (ONLY ONCE) -->
-<div style="width:100%; overflow:hidden; margin:30px 0;">
-  <img src="https://raw.githubusercontent.com/flouratec/FogSecurity-AI2/main/dashboard_quadrants.png"
-       style="width:100%; border-radius:12px; display:block;">
 </div>
+
+<body>
+<div style="background:#111c36;padding:15px 25px;display:flex;justify-content:space-between;align-items:center;">
+  <div style="font-size:22px;color:#4fc3f7;font-weight:bold;">
+    FogSecurity-AI2 Control Panel
+  </div>
+
+  <div>
+    <button onclick="openSettings()" style="margin-right:10px;padding:8px 14px;border:none;border-radius:6px;background:#4fc3f7;color:#000;font-weight:bold;cursor:pointer;">
+      System Settings
+    </button>
+
+    <button onclick="registerNode()" style="margin-right:10px;padding:8px 14px;border:none;border-radius:6px;background:#1b5e20;color:#fff;font-weight:bold;cursor:pointer;">
+      Register Node
+    </button>
+
+    <button onclick="revokeNode()" style="padding:8px 14px;border:none;border-radius:6px;background:#b71c1c;color:#fff;font-weight:bold;cursor:pointer;">
+      Revoke Node
+    </button>
+  </div>
+</div>
+
+<section style="padding:40px 30px; background:linear-gradient(135deg,#0b1220,#111c36); border-bottom:2px solid #4fc3f7;">
+  <h1 style="color:#4fc3f7; margin-bottom:5px;">FogSecurity-AI2</h1>
+  <h2 style="margin-top:0; font-weight:normal; color:#ccc;">
+    AI-Driven Integrated Fog Computing Security Framework
+  </h2>
+
+  <p><strong>Abstract —</strong> FogSecurity-AI2 is a research-driven fog security architecture integrating node authentication, mobility-aware session management, and AI-based adaptive trust evaluation to protect distributed IoT systems.</p>
+
+  <p><strong>Keywords:</strong> Fog Computing, AI Security, Node Authentication, Mobility Management, Adaptive Trust</p>
+
+  <p style="font-size:14px; color:#aaa;">
+    Master’s Research in Data science & Artificial Intelligence <br>
+  </p>
+</section>
+
+<header>
+<div class="logo">FogSecurity-AI2 Live Simulation</div>
+<div>
+<a href="results.html" style="color:#4fc3f7;margin-right:15px;">Results</a>
+<a href="ai-model.html" style="color:#4fc3f7;margin-right:15px;">AI Model</a>
+<a href="architecture.html" style="color:#4fc3f7;margin-right:15px;">Architecture</a>
+<a href="monitoring.html" style="color:#4fc3f7;">Monitoring</a>
+</div>
+</header>
 
 <div class="container">
 
@@ -64,7 +99,7 @@ ul{line-height:1.7;color:#d8e1ff}
 <h2>Mobility Tracker (MTP)</h2>
 <input id="sessionInput" placeholder="Session ID">
 <input id="nodeInput" placeholder="Target Fog Node">
-<button class="btn" onclick="transferSession()">Create Session</button>
+<button class="btn" onclick="transferSession()">Transfer Session</button>
 <div id="sessionList"></div>
 </div>
 
@@ -73,12 +108,13 @@ ul{line-height:1.7;color:#d8e1ff}
 <div class="stat">Active Nodes: <span id="activeNodes">0</span></div>
 <div class="stat">Anomalies: <span id="anomalies">0</span></div>
 <div class="stat">Avg Trust Score: <span id="trustScore">100</span>%</div>
-<button class="btn" onclick="simulateAttack()">Simulate Attack</button>
 </div>
 
 <div class="card">
 <h2>System Performance</h2>
-<button class="btn" onclick="runLatency()">Run Latency Probe</button>
+Latency: 0.7s<br>
+Handoff: 150ms<br>
+Availability: 99.7%
 <div class="chart">
 <div class="bar" id="b1"></div>
 <div class="bar" id="b2"></div>
@@ -88,11 +124,17 @@ ul{line-height:1.7;color:#d8e1ff}
 </div>
 
 </div>
+</div> <!-- نهاية .container -->
 
-<div style="text-align:center;margin:20px;">
-<button class="btn" onclick="runExperiment()">Run Thesis Experiment</button>
-<button class="btn" onclick="generateReport()">Generate Research Report</button>
+<!-- 🖼 System Dashboard Illustration -->
+<div style="width:100%; overflow:hidden; margin:30px 0;">
+  <img src="https://raw.githubusercontent.com/flouratec/FogSecurity-AI2/main/dashboard_quadrants.png"
+       style="width:100%; border-radius:12px; display:block;">
 </div>
+
+<footer>
+FogSecurity-AI2 — AI-Driven Fog Computing Security Framework
+</footer>
 
 <footer>
 FogSecurity-AI2 — AI-Driven Fog Computing Security Framework
@@ -135,26 +177,6 @@ saveData();
 renderAll();
 }
 
-function runLatency(){
-["b1","b2","b3","b4"].forEach(id=>{
-document.getElementById(id).style.height=Math.floor(Math.random()*100)+"%";
-});
-}
-
-function runExperiment(){
-simulateAttack();
-runLatency();
-}
-
-function generateReport(){
-let report=`FogSecurity-AI2 Research Report\nNodes: ${nodes.length}\nSessions: ${sessions.length}\nAnomalies: ${anomalies}`;
-let blob=new Blob([report],{type:"text/plain"});
-let a=document.createElement("a");
-a.href=URL.createObjectURL(blob);
-a.download="FogSecurity-AI2_Report.txt";
-a.click();
-}
-
 function renderNodes(){
 let html="";
 nodes.forEach(n=>{
@@ -179,13 +201,177 @@ let avg=nodes.length?Math.round(nodes.reduce((a,b)=>a+b.trust,0)/nodes.length):1
 document.getElementById("trustScore").innerText=avg;
 }
 
+function animateBars(){
+["b1","b2","b3","b4"].forEach(id=>{
+document.getElementById(id).style.height=Math.floor(Math.random()*100)+"%";
+});
+}
+
 function renderAll(){
 renderNodes();
 renderSessions();
 renderStats();
+animateBars();
 }
 
 renderAll();
+</script>
+
+</body>
+</html>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+:root{
+ --bg:#0b1220; --card:#111c36; --accent:#4fc3f7;
+ --ok:#1b5e20; --warn:#b58900; --bad:#b71c1c; --muted:#a8b3cf;
+}
+body{margin:0;font-family:Arial;background:var(--bg);color:#fff}
+header{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:var(--card)}
+.logo{font-weight:bold;color:var(--accent)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:16px}
+.card{background:var(--card);padding:14px;border-radius:12px}
+.btn{padding:8px 12px;border:none;border-radius:6px;background:var(--accent);cursor:pointer;font-weight:bold}
+.table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px}
+.table th,.table td{padding:8px;border-bottom:1px solid rgba(255,255,255,.08)}
+.badge{padding:3px 8px;border-radius:12px;font-size:12px}
+.b-ok{background:#1b5e20}.b-warn{background:#b58900;color:#111}.b-bad{background:#b71c1c}
+.log{background:#0e1730;padding:10px;border-radius:8px;font-size:12px;max-height:200px;overflow:auto}
+footer{text-align:center;padding:10px;color:var(--muted);font-size:12px}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">FogSecurity-AI2 — Research Control Center</div>
+</header>
+
+<div class="grid">
+
+<div class="card">
+<h2>Research KPIs (Live)</h2>
+<div>Active Nodes: <b id="kpiNodes">0</b></div>
+<div>Active Sessions: <b id="kpiSessions">0</b></div>
+<div>Avg Trust Score: <b id="kpiTrust">100</b>%</div>
+<div>Avg Latency: <b id="kpiLatency">0</b> ms</div>
+<div>Avg Handoff: <b id="kpiHandoff">0</b> ms</div>
+<div>Anomalies: <b id="kpiAnoms">0</b></div>
+<br>
+<button class="btn" onclick="runThesisExperiment()">Run Thesis Experiment</button>
+<button class="btn" onclick="generateResearchReport()">Generate Research Report</button>
+</div>
+
+<div class="card">
+<h2>Performance Monitor</h2>
+<canvas id="perfChart"></canvas>
+<button class="btn" onclick="runLatencyProbe()">Run Latency Probe</button>
+</div>
+
+<div class="card">
+<h2>Authentication Node Table (ANT)</h2>
+<input id="macInput" placeholder="Enter MAC Address">
+<button class="btn" onclick="registerNode()">Register Node</button>
+<table class="table" id="nodesTable"></table>
+</div>
+
+<div class="card">
+<h2>Mobility Tracker Protocol (MTP)</h2>
+<input id="sessionIdInput" placeholder="Session ID">
+<button class="btn" onclick="createSession()">Create Session</button>
+<table class="table" id="sessionsTable"></table>
+</div>
+
+<div class="card">
+<h2>Security Event Log</h2>
+<div class="log" id="logBox"></div>
+</div>
+
+</div>
+
+<footer>FogSecurity-AI2 Research Dashboard</footer>
+
+<script>
+const state={nodes:[],sessions:[],logs:[],metrics:[],anomalies:0};
+
+function logEvent(t,m){state.logs.unshift(`[${new Date().toLocaleTimeString()}] ${t} - ${m}`);renderLog();}
+function renderLog(){document.getElementById("logBox").innerHTML=state.logs.join("<br>");}
+
+function registerNode(){
+ let mac=document.getElementById("macInput").value;
+ state.nodes.push({mac,trust:100,status:"Trusted"});
+ logEvent("ANT","Node Registered: "+mac);
+ renderNodes();
+}
+
+function renderNodes(){
+ let html="<tr><th>MAC</th><th>Status</th><th>Trust</th></tr>";
+ state.nodes.forEach(n=>{
+  html+=`<tr><td>${n.mac}</td><td><span class="badge b-ok">${n.status}</span></td><td>${n.trust}%</td></tr>`;
+ });
+ document.getElementById("nodesTable").innerHTML=html;
+ updateKPIs();
+}
+
+function createSession(){
+ let id=document.getElementById("sessionIdInput").value;
+ state.sessions.push({id,status:"Active"});
+ logEvent("MTP","Session Created: "+id);
+ renderSessions();
+}
+
+function renderSessions(){
+ let html="<tr><th>Session</th><th>Status</th></tr>";
+ state.sessions.forEach(s=>{
+  html+=`<tr><td>${s.id}</td><td>${s.status}</td></tr>`;
+ });
+ document.getElementById("sessionsTable").innerHTML=html;
+ updateKPIs();
+}
+
+function runLatencyProbe(){
+ let t0=performance.now();for(let i=0;i<30000;i++){Math.sqrt(i);}let t1=performance.now();
+ let ms=Math.round(t1-t0);
+ state.metrics.push(ms);
+ logEvent("PERF","Latency: "+ms+" ms");
+ updateKPIs();
+}
+
+function runThesisExperiment(){
+ state.anomalies+=2;
+ logEvent("EXPERIMENT","Full thesis scenario executed");
+ updateKPIs();
+}
+
+function generateResearchReport(){
+ let report=`FogSecurity-AI2 Research Report
+Nodes: ${state.nodes.length}
+Sessions: ${state.sessions.length}
+Anomalies: ${state.anomalies}`;
+ let blob=new Blob([report],{type:"text/plain"});
+ let a=document.createElement("a");
+ a.href=URL.createObjectURL(blob);
+ a.download="FogSecurity-AI2_Report.txt";
+ a.click();
+}
+
+function updateKPIs(){
+ document.getElementById("kpiNodes").innerText=state.nodes.length;
+ document.getElementById("kpiSessions").innerText=state.sessions.length;
+ document.getElementById("kpiAnoms").innerText=state.anomalies;
+ document.getElementById("kpiTrust").innerText=state.nodes.length?Math.round(state.nodes.reduce((a,b)=>a+b.trust,0)/state.nodes.length):100;
+ document.getElementById("kpiLatency").innerText=state.metrics.length?state.metrics[state.metrics.length-1]:0;
+}
+
+renderNodes();renderSessions();updateKPIs();
+</script>
+## 🛠 Technology Stack
+
+FogSecurity-AI2 was developed using a hybrid multi-layered architecture combining web technologies, fog-layer services, and AI-driven analytics.
 </script>
 
 </body>

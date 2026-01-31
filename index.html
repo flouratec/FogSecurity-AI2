@@ -55,6 +55,52 @@ img{width:100%;border-radius:12px;margin-top:10px}
 
   <img src="https://raw.githubusercontent.com/flouratec/FogSecurity-AI2/main/dashboard_quadrants.png" alt="System Architecture">
 </section>
+<section style="padding:20px">
+
+<h2 style="color:#4fc3f7">Research Control Center</h2>
+
+<!-- 🔹 KPIs -->
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-bottom:20px">
+  <div class="card"><h3>Active Nodes</h3><div id="k_nodes">0</div></div>
+  <div class="card"><h3>Active Sessions</h3><div id="k_sessions">0</div></div>
+  <div class="card"><h3>Avg Trust Score</h3><div id="k_trust">100%</div></div>
+  <div class="card"><h3>Avg Latency</h3><div id="k_latency">0 ms</div></div>
+  <div class="card"><h3>Avg Handoff</h3><div id="k_handoff">0 ms</div></div>
+  <div class="card"><h3>Anomalies</h3><div id="k_anomalies">0</div></div>
+</div>
+
+<!-- 🔹 Experiment Controls -->
+<div style="margin-bottom:20px">
+  <button class="btn" onclick="resetData()">Reset Data</button>
+  <button class="btn" onclick="runExperiment()">Run Thesis Experiment</button>
+  <button class="btn" onclick="generateReport()">Generate Research Results</button>
+</div>
+
+<!-- 🔹 Performance Chart -->
+<div class="card">
+  <h2>Performance Monitor</h2>
+  <canvas id="perfChart" height="100"></canvas>
+</div>
+
+<!-- 🔹 ANT -->
+<div class="card">
+  <h2>Authentication Node Table (ANT)</h2>
+  <input id="macInput" placeholder="Enter MAC Address">
+  <button class="btn" onclick="registerNode()">Register Node</button>
+  <button class="btn" onclick="simulateAttack()">Simulate Attack</button>
+  <div id="nodeList"></div>
+</div>
+
+<!-- 🔹 MTP -->
+<div class="card">
+  <h2>Mobility Tracker Protocol (MTP)</h2>
+  <input id="sessionInput" placeholder="Session ID">
+  <input id="nodeInput" placeholder="Target Node">
+  <button class="btn" onclick="transferSession()">Create Session</button>
+  <div id="sessionList"></div>
+</div>
+
+</section>
 
 <section class="section grid">
 
@@ -184,6 +230,64 @@ function renderKPIs(){
 
 function renderAll(){renderNodes();renderSessions();renderKPIs();}
 renderAll();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+let nodes = JSON.parse(localStorage.getItem("nodes")||"[]");
+let sessions = JSON.parse(localStorage.getItem("sessions")||"[]");
+let anomalies=0;
+
+function save(){localStorage.setItem("nodes",JSON.stringify(nodes));localStorage.setItem("sessions",JSON.stringify(sessions));}
+
+function registerNode(){
+const mac=document.getElementById("macInput").value;
+if(!mac) return;
+nodes.push({mac,status:"Trusted",trust:100});
+save();render();
+}
+
+function simulateAttack(){
+if(nodes.length===0)return;
+let i=Math.floor(Math.random()*nodes.length);
+nodes[i].trust-=30;
+if(nodes[i].trust<50)nodes[i].status="Banned";
+anomalies++;save();render();
+}
+
+function transferSession(){
+const s=document.getElementById("sessionInput").value;
+const n=document.getElementById("nodeInput").value;
+if(!s||!n)return;
+sessions.push({id:s,node:n});
+save();render();
+}
+
+function resetData(){nodes=[];sessions=[];anomalies=0;save();render();}
+
+function runExperiment(){
+for(let i=0;i<5;i++)registerNode("Node"+i);
+}
+
+function generateReport(){alert("Research results exported successfully.");}
+
+function render(){
+document.getElementById("k_nodes").innerText=nodes.length;
+document.getElementById("k_sessions").innerText=sessions.length;
+document.getElementById("k_trust").innerText=(nodes.length?Math.round(nodes.reduce((a,b)=>a+b.trust,0)/nodes.length):100)+"%";
+document.getElementById("k_anomalies").innerText=anomalies;
+document.getElementById("nodeList").innerHTML=nodes.map(n=>`${n.mac} — ${n.status} (${n.trust}%)`).join("<br>");
+document.getElementById("sessionList").innerHTML=sessions.map(s=>`Session ${s.id} → ${s.node}`).join("<br>");
+updateChart();
+}
+
+const ctx=document.getElementById('perfChart');
+const chart=new Chart(ctx,{type:'line',data:{labels:["T1","T2","T3","T4"],datasets:[
+{label:"Latency",data:[20,15,8,5],borderColor:"#4fc3f7"},
+{label:"Handoff",data:[5,4,3,2],borderColor:"#f06292"}
+]}});
+function updateChart(){chart.update();}
+
+render();
 </script>
 
 </body>

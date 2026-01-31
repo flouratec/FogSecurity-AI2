@@ -286,9 +286,66 @@ const chart=new Chart(ctx,{type:'line',data:{labels:["T1","T2","T3","T4"],datase
 {label:"Handoff",data:[5,4,3,2],borderColor:"#f06292"}
 ]}});
 function updateChart(){chart.update();}
+let logs = [];
+
+function addLog(msg){
+  const t = new Date().toLocaleTimeString();
+  logs.unshift(`[${t}] ${msg}`);
+  document.getElementById("logBox").innerHTML = logs.join("<br>");
+}
+
+function clearLog(){ logs=[]; addLog("SYSTEM — Log cleared"); }
+
+function seedDemo(){
+  nodes.push({mac:"00:A1:B2:C3:D4:E5",status:"Trusted",trust:95});
+  nodes.push({mac:"88:AF:91:77:BC:22",status:"Trusted",trust:85});
+  anomalies=1;
+  addLog("SYSTEM — Demo data seeded");
+  save(); render();
+}
 
 render();
 </script>
+<section style="padding:20px; display:grid; grid-template-columns:2fr 1fr; gap:20px">
+
+<!-- 🧠 AI Trust Engine -->
+<div class="card">
+  <h2>AI Trust Engine</h2>
+
+  <label>Anomaly Sensitivity</label>
+  <select id="sensitivity">
+    <option>Low</option>
+    <option selected>High</option>
+  </select>
+
+  <label style="margin-left:20px;">Auto-Isolation</label>
+  <select id="autoIso">
+    <option>OFF</option>
+    <option selected>ON</option>
+  </select>
+
+  <div style="margin-top:15px; font-size:14px; color:#ccc">
+    <strong>Trust Update Rule (research prototype):</strong><br>
+    trust = trust − round(anomaly_score × sensitivity) + uptime_bonus
+  </div>
+
+  <div id="trustInfo" style="margin-top:15px"></div>
+</div>
+
+<!-- 📜 Security Log -->
+<div class="card">
+  <h2>Security Event Log</h2>
+  <div id="logBox" style="height:250px; overflow:auto; font-size:13px; background:#0b1220; padding:10px; border-radius:6px;"></div>
+
+  <button class="btn" onclick="clearLog()">Clear Log</button>
+  <button class="btn" onclick="seedDemo()">Seed Demo Data</button>
+
+  <div style="margin-top:10px; font-size:12px; color:#aaa">
+    This log can be cited in implementation & results chapters.
+  </div>
+</div>
+
+</section>
 
 </body>
 </html>
